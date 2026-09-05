@@ -1,6 +1,6 @@
-# 🛡️ Cybersecurity: Wazuh XDR & SIEM Deployment and Firewall Configuration
+# Cybersecurity: Wazuh XDR & SIEM Deployment and Firewall Configuration
 
-## 📖 Table of Contents
+## Table of Contents
 - [Introduction to Wazuh](#-introduction-to-wazuh-xdr--siem)
 - [Project Overview](#-project-overview)
 - [Objective](#-objective)
@@ -16,16 +16,16 @@
 
 ---
 
-## 🛑 Introduction to Wazuh (XDR & SIEM)
+## Introduction to Wazuh (XDR & SIEM)
 **Wazuh** is a free, open-source security platform that unifies Extended Detection and Response (XDR) and Security Information and Event Management (SIEM) capabilities. It protects endpoints and cloud workloads by providing log data analysis, intrusion detection, file integrity monitoring, and vulnerability detection. Deploying Wazuh allows security teams to centralize threat intelligence and actively monitor their infrastructure for malicious activity.
 
-## 📌 Project Overview
+## Project Overview
 This project documents the complete deployment of the Wazuh central components (Server, Indexer, and Dashboard) on a Linux environment. It details the process of executing the automated installation assistant, verifying backend services, and crucially, troubleshooting network connectivity issues by configuring the Uncomplicated Firewall (UFW) to permit secure web interface access.
 
-## 🎯 Objective
+## Objective
 To successfully provision a locally hosted Wazuh XDR platform, ensuring all core services are running correctly. A primary objective of this lab is to demonstrate practical Linux network troubleshooting by identifying firewall blocks and surgically opening the required listening ports to establish access to the SIEM dashboard.
 
-## 🛠️ System Specifications
+## System Specifications
 *   **Operating System:** Linux (Ubuntu/Debian architecture)
 *   **Target Application:** Wazuh version 4.14
 *   **Key Components:** Wazuh Manager, Wazuh Indexer, Wazuh Dashboard
@@ -33,7 +33,7 @@ To successfully provision a locally hosted Wazuh XDR platform, ensuring all core
 
 ---
 
-## 🚀 Deployment Methodology Workflow
+## Deployment Methodology Workflow
 
 ### Phase 1: Documentation & Requirements Verification
 
@@ -60,7 +60,7 @@ Selected the "Quickstart" guide, which provides the streamlined method for deplo
 Reviewed the initial Quickstart deployment architecture and open-source licensing terms.
 <br>
 
-![Review Quickstart](images/05-quickstart-opened.jpg)
+![Review Quickstart](images/05-quickstart-opened.png)
 
 Verified the hardware prerequisites, ensuring the Virtual Machine was allocated a minimum of 4 vCPUs and 8 GiB of RAM to handle the heavy indexing workload.
 <br>
@@ -83,12 +83,12 @@ Executed the installation command in the Linux terminal.
     *   `sudo bash ./wazuh-install.sh -a`: Executes the bash script with root privileges using the `-a` (assistant/automated) flag to handle dependencies and component linking automatically.
 <br>
 
-![Run Installation](images/08-linuxmint-start-wazuh-installation.jpg)
+![Run Installation](images/08-linuxmint-start-wazuh-installation.png)
 
 The installation completed successfully. The assistant automatically generated and output the highly secure `admin` credentials required for web dashboard access.
 <br>
 
-![Installation Finished](images/09-installation-finished.jpg)
+![Installation Finished](images/09-installation-finished.png)
 
 ---
 
@@ -98,19 +98,19 @@ Before attempting to access the dashboard, it is critical to verify that the und
 *   **Command Breakdown:** `sudo systemctl status wazuh-manager` checks the current operational state of the manager daemon.
 <br>
 
-![Wazuh Manager Status](images/10-check-status-wazuh-manager.jpg)
+![Wazuh Manager Status](images/10-check-status-wazuh-manager.png)
 
 Verified the Wazuh Indexer, the core search and analytics engine that stores the alerts.
 *   **Command Breakdown:** `sudo systemctl status wazuh-indexer`
 <br>
 
-![Wazuh Indexer Status](images/11-check-status-wazuh-indexer.jpg)
+![Wazuh Indexer Status](images/11-check-status-wazuh-indexer.png)
 
 Finally, verified the Wazuh Dashboard service, which powers the web-based user interface.
 *   **Command Breakdown:** `sudo systemctl status wazuh-dashboard`
 <br>
 
-![Wazuh Dashboard Status](images/12-check-status-wazuh-dashboard.jpg)
+![Wazuh Dashboard Status](images/12-check-status-wazuh-dashboard.png)
 
 ---
 
@@ -180,14 +180,14 @@ Reached the main Wazuh Dashboard, providing a comprehensive overview of security
 Navigated to the Discover tab (Wazuh Logs) to verify that raw system logs, rule descriptions, and indexing data were flowing correctly into the analytics engine.
 <br>
 
-![Wazuh Logs](images/23-wazuh-logs.jpg)
+![Wazuh Logs](images/23-wazuh-logs.png)
 
 ---
 
-## 🛡️ Security Relevance & Impact
+## Security Relevance & Impact
 Deploying an XDR/SIEM solution like Wazuh is critical for maintaining infrastructure visibility. However, deploying the software is only half the battle. The ability to utilize Linux command-line tools (`systemctl`, `ss`, `ufw`) to diagnose network timeouts, identify active listening sockets, and securely modify firewall rules demonstrates the practical systems engineering skills required to maintain an active Security Operations Center (SOC).
 
 ---
 
-## ⚖️ Ethical Guidelines & Disclaimer
+## Ethical Guidelines & Disclaimer
 This deployment and network configuration lab was performed within a private, authorized Virtual Machine environment strictly for educational and defensive cybersecurity training purposes.
